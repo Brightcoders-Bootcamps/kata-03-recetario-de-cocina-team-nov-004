@@ -8,15 +8,17 @@ export default class Home extends React.Component{
         return(
             <ScrollView  style={{backgroundColor: "#FFF"}}>
                 <View style={{
-                    paddingHorizontal:20,
+                    paddingHorizontal:5,
                     marginTop:50,
                     height: "50%"
                 }}>
                     <Text style={{
                         color:"#E30052",
-                        fontSize: 20
+                        fontSize: 20,
+                        marginBottom:10
                     }}>TRENDING</Text>
                     <List />
+
                 </View>
             </ScrollView>
            
