@@ -8,10 +8,12 @@ class List extends Component{
 
     _renderItem(item){
         return(
-            <Image style={{width: 120, height: 180, marginRight:5, }} source={item.ruta}/>
+            <View>
+                <Image style={{width: 100, height: 100, marginRight:10, }} source={item.ruta}/>
+                <Text style={{width:100, color:'#fff', marginBottom:20, }}>{item.name}</Text>
+            </View>  
         )
     }
-
 
     render(){
         return(
@@ -20,8 +22,7 @@ class List extends Component{
                 horizontal ={true}
                 renderItem = {({item}) => this._renderItem(item)}
                 data={recipes}
-                />
-                    
+                />  
             </View>
         )
     }
