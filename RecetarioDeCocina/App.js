@@ -5,10 +5,9 @@
  * @format
  * @flow strict-local
  */
-
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native'
-import HomeStackNavigator from './src/navigations/Navigator'
+import HomeStackNavigator from './src/navigation/Navigation'
 import {LogBox} from 'react-native';
 
 LogBox.ignoreLogs([

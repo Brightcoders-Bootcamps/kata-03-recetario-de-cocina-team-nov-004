@@ -7,8 +7,10 @@ import {data} from '../components/Data'
 
 let recipes = data.recipes
 
-export default class Home extends React.Component{
-    render(){
+export default function Home(props){
+     const {navigation}= props;
+     //console.log(props);
+
         return(
             <>
             <ScrollView  style={{backgroundColor: "#332F2C"}}>
@@ -36,14 +38,14 @@ export default class Home extends React.Component{
             <ScrollView  style={styles.viewRecent}>
             <Text style={{ color:"#BB367A", fontSize: 20, marginBottom:10 }}>RECENT</Text>
                 <View style={styles.viewRecipes}>
-                 <CarouselVertical data={recipes} />
+                 <CarouselVertical data={recipes}  navigation={navigation}/>
                  </View>
 
             </ScrollView>
         </>
         )
     }
-}
+
 const styles = StyleSheet.create({
  
     viewRecent:{

@@ -7,12 +7,13 @@ const {width}=Dimensions.get("window");
 const ITEM_WIDTH=Math.round(width * 0.7);
 
 export default function CarouselVertical(props){
-    const {data} = props;
+    const {data, navigation} = props;
+    //console.log(props);
     return(
       <Carousel
       layout="default" 
       data={data}
-      renderItem= {(item) => <RenderItem  data={item}/> }
+      renderItem= {(item) => <RenderItem  data={item} navigation={navigation} /> }
       sliderWidth={width}
       itemWidth={ITEM_WIDTH}
       />
@@ -21,12 +22,15 @@ export default function CarouselVertical(props){
 }
 
 function RenderItem(props){
-const {data} =props;
-const{ name, ruta} =data.item;
+const {data, navigation} =props;
+const{ id, name, ruta} =data.item;
 
+const onNavigation = ( ) => {
+    navigation.navigate('detail', {id} );
+}
 //console.log(props);
 return(
-    <TouchableWithoutFeedback onPress={() =>console.log('Hola')}>
+    <TouchableWithoutFeedback onPress={onNavigation}>
         <View style={styles.card}>
             <Image style={styles.image} source={ruta}/>
             <Text style={{color:'#fff'}}>{name}</Text>
@@ -48,7 +52,7 @@ const styles =StyleSheet.create({
     },
     image:{
        width: "90%",
-       height: 200,
+       height: 220,
        borderRadius: 20,
     },
 
