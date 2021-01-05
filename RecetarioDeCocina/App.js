@@ -9,6 +9,11 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native'
 import HomeStackNavigator from './src/navigations/Navigator'
+import {LogBox} from 'react-native';
+
+LogBox.ignoreLogs([
+  'Calling `getNode()`',
+]);
 
 const App = () => {
   return(
