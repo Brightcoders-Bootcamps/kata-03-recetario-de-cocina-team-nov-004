@@ -25,10 +25,10 @@ export default function CarouselVertical(props){
 
 function RenderItem(props){
         const {data, navigation} =props;
-        const{ id, name, ruta, ingredients,portions,} =data.item;
+        const{ id, name, ruta, ingredients,category,portions,} =data.item;
 
         const onNavigation = ( ) => {
-            navigation.navigate('detail', {id, name, ruta, ingredients,portions} );
+            navigation.navigate('detail', {id, name, ruta, ingredients,portions,category } );
         }
         //console.log(props);
         return(
