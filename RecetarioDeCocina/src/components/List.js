@@ -1,31 +1,63 @@
-import React, {Component} from 'react'
-import { Text, View, StyleSheet, FlatList, Image } from 'react-native'
-import {data} from '../components/Data'
+import React, {Component} from 'react';
+import { Text, View, StyleSheet, FlatList,Dimensions, Image,TouchableWithoutFeedback } from 'react-native';
 
-let recipes = data.recipes
+const {width}=Dimensions.get("window");
+const ITEM_WIDTH=Math.round(width * 0.7);
 
-class List extends Component{
 
-    _renderItem(item){
-        return(
-            <View>
-                <Image style={{width: 100, height: 100, marginRight:10, }} source={item.ruta}/>
-                <Text style={{width:100, color:'#fff', marginBottom:20, }}>{item.name}</Text>
-            </View>  
-        )
-    }
+export default function List(props){
+const {data,navigation}=props;
 
-    render(){
-        return(
-            <View style={{flex: 1}}>
-                <FlatList 
-                horizontal ={true}
-                renderItem = {({item}) => this._renderItem(item)}
-                data={recipes}
-                />  
-            </View>
-        )
-    }
+return(
+    <View style={{flex: 1}}>
+        <FlatList 
+        horizontal ={true}
+        data={data}
+        renderItem= {(item) => <RenderItem  data={item} navigation={navigation} /> }
+        sliderWidth={width}
+        itemWidth={ITEM_WIDTH}
+        />  
+    </View>
+
+);
 }
 
-export default List;
+function RenderItem(props){
+    const {data, navigation} =props;
+    const{ id, name, ruta, ingredients,portions,} =data.item;
+
+    const onNavigation = ( ) => {
+        navigation.navigate('detail', {id, name, ruta, ingredients,portions} );
+    }
+    //console.log(props);
+    return(
+
+        <TouchableWithoutFeedback onPress={onNavigation}>
+            <View style={styles.card}>
+                <Image style={styles.image} source={ruta}/>
+                <Text style={{color:'#fff', marginBottom:10} }>{name}</Text>
+            </View>
+        </TouchableWithoutFeedback>
+    );
+}
+
+const styles =StyleSheet.create({
+    card:{
+       shadowColor:"#000",
+       shadowOffset:{
+           width:10,
+           height:20,
+       },
+       alignItems:'center',
+       shadowOpacity:1,
+       shadowRadius:10,
+    },
+    image:{
+       width: 100,
+       height: 120,
+       borderRadius: 10,
+    },
+
+
+})
+

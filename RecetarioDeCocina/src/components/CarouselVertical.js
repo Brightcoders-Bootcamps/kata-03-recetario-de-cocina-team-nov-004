@@ -6,6 +6,8 @@ import Carousel  from 'react-native-snap-carousel';
 const {width}=Dimensions.get("window");
 const ITEM_WIDTH=Math.round(width * 0.7);
 
+
+
 export default function CarouselVertical(props){
     const {data, navigation} = props;
     //console.log(props);
@@ -22,21 +24,21 @@ export default function CarouselVertical(props){
 }
 
 function RenderItem(props){
-const {data, navigation} =props;
-const{ id, name, ruta} =data.item;
+        const {data, navigation} =props;
+        const{ id, name, ruta, ingredients,portions,} =data.item;
 
-const onNavigation = ( ) => {
-    navigation.navigate('detail', {id} );
-}
-//console.log(props);
-return(
-    <TouchableWithoutFeedback onPress={onNavigation}>
-        <View style={styles.card}>
-            <Image style={styles.image} source={ruta}/>
-            <Text style={{color:'#fff'}}>{name}</Text>
-        </View>
-    </TouchableWithoutFeedback>
-)
+        const onNavigation = ( ) => {
+            navigation.navigate('detail', {id, name, ruta, ingredients,portions} );
+        }
+        //console.log(props);
+        return(
+            <TouchableWithoutFeedback onPress={onNavigation}>
+                <View style={styles.card}>
+                    <Image style={styles.image} source={ruta}/>
+                    <Text style={{color:'#fff'}}>{name}</Text>
+                </View>
+            </TouchableWithoutFeedback>
+        )
 }
 
 const styles =StyleSheet.create({

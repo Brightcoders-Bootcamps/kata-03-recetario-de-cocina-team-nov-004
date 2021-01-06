@@ -24,24 +24,24 @@ export default function Home(props){
                         fontSize: 20,
                         marginBottom:10
                     }}>TRENDING</Text>
-                    <List />
+                    <List  data={recipes}  navigation={navigation}  />
                 </View>
                 <View style={{
                     marginTop:70,
                     height: "50%"
                 }}>
                   
-                    
                 </View>
             </ScrollView>
 
+
             <ScrollView  style={styles.viewRecent}>
-            <Text style={{ color:"#BB367A", fontSize: 20, marginBottom:10 }}>RECENT</Text>
+            <Text style={{ color:"#BB367A", fontSize: 20, marginBottom:10, marginLeft:10 }}>RECENT</Text>
                 <View style={styles.viewRecipes}>
                  <CarouselVertical data={recipes}  navigation={navigation}/>
                  </View>
-
             </ScrollView>
+          
         </>
         )
     }
@@ -51,11 +51,19 @@ const styles = StyleSheet.create({
     viewRecent:{
         position:'absolute',
         backgroundColor:'#332F2C',
-        marginTop:250,
+        marginTop:270,
+    },
+    viewTrending:{
+        position:'absolute',
+        backgroundColor:'#332F2C',
+        marginTop:50,
+      
     },
     viewRecipes:{
         marginVertical:10,
-
-
+    },
+    tending:{
+        marginTop:20,
+        marginBottom:50,
     }
 })
