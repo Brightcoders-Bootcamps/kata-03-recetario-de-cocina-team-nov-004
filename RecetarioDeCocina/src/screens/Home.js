@@ -8,56 +8,40 @@ import {data} from '../components/Data'
 let recipes = data.recipes
 
 export default function Home(props){
-     const {navigation}= props;
+    const {navigation}= props;
      //console.log(props);
 
-        return(
-            <>
-            <ScrollView  style={{backgroundColor: "#332F2C"}}>
-                <View style={{
-                    paddingHorizontal:5,
-                    marginTop:50,
-                    height: "50%"
-                }}>
-                    <Text style={{
-                        color:"#BB367A",
-                        fontSize: 20,
-                        marginBottom:10
-                    }}>TRENDING</Text>
+    return(
+        <>
+            <ScrollView  style={styles.viewPrincipal}>
+                <View style={styles.viewTrending}>
+                    <Text style={styles.textTrending}>TRENDING</Text>
                     <List  data={recipes}  navigation={navigation}  />
                 </View>
-                <View style={{
-                    marginTop:70,
-                    height: "50%"
-                }}>
-                  
+                <View style={styles.viewRecent}>
+                    <Text style={styles.textRecent}>RECENT</Text>
+                    <View style={styles.viewRecipes}>
+                        <CarouselVertical data={recipes}  navigation={navigation}/>
+                    </View>
                 </View>
             </ScrollView>
-
-
-            <ScrollView  style={styles.viewRecent}>
-            <Text style={{ color:"#BB367A", fontSize: 20, marginBottom:10, marginLeft:10 }}>RECENT</Text>
-                <View style={styles.viewRecipes}>
-                 <CarouselVertical data={recipes}  navigation={navigation}/>
-                 </View>
-            </ScrollView>
-          
+             {/* <ScrollView  style={styles.viewRecent}>
+             
+            </ScrollView>       */}
         </>
-        )
-    }
+    )
+}
 
 const styles = StyleSheet.create({
- 
+    viewPrincipal:{
+        backgroundColor: "#1e1e1e"
+    },
     viewRecent:{
-        position:'absolute',
-        backgroundColor:'#332F2C',
-        marginTop:270,
+        marginTop:30,
     },
     viewTrending:{
-        position:'absolute',
-        backgroundColor:'#332F2C',
-        marginTop:50,
-      
+        paddingHorizontal:5,
+        marginTop:30
     },
     viewRecipes:{
         marginVertical:10,
@@ -65,5 +49,16 @@ const styles = StyleSheet.create({
     tending:{
         marginTop:20,
         marginBottom:50,
+    },
+    textTrending:{
+        color:"#BB367A",
+        fontSize: 20,
+        marginBottom:10
+    },
+    textRecent:{
+        color:"#BB367A",
+        fontSize: 20,
+        marginBottom:10,
+        marginLeft: 5
     }
 })

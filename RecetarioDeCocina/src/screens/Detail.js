@@ -3,61 +3,78 @@ import {View, StyleSheet,Image, FlatList,
     ImageBackground,
     Dimensions,
     TouchableOpacity,TouchableWithoutFeedback,Text} from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler';
+import {LogBox} from 'react-native';
 
+
+LogBox.ignoreLogs([
+  'Each child in a list should have a uni',
+]);
 
 export default function Detail(props){
-    const {route, navigation}= props;
-    const {id,name, ruta, ingredients, category, portions}= route.params;
-    // console.log(props);
+  const {route, navigation}= props;
+  const {id,name, ruta, ingredients, category, portions}= route.params;
+  // console.log(props);
  
-    function onNavigation() {
-        navigation.navigate('home');
-      }
+  function onNavigation() {
+    navigation.navigate('home');
+  }
 
-        return(
-            <>
-            <View style={styles.ViewDetail}>
-                <View style={styles.ViewImage}>
-                    <ImageBackground style={styles.image} source={ruta}/>
-                    <View style={styles.Icons}>
-                            <View  style={[ styles.cont,{justifyContent: 'space-between', paddingHorizontal: '5%'}]}>
-                            <View style={{flex: 1}}>
-                                <TouchableWithoutFeedback onPress={onNavigation}>
-                                <Image
-                                    style={styles.iconX, {marginLeft: -10}}
-                                    source={require('../images/close.png')}
-                                />
-                                </TouchableWithoutFeedback>
-                            </View>
-                            <View
-                                style={[ styles.cont, {justifyContent: 'space-around', justifyContent: 'flex-end'} ]}>
-                                <Image
-                                style={[styles.iconShare, {marginRight: 20}]}
-                                source={require('../images/share.png')}
-                                />
-                            </View>
-                         </View>
-                         <View style={styles.ViewName}>
-                            <Text style={[styles.textColorImage, {fontSize: 18}]}>
-                                {' '}
-                                {category}{' '}
-                            </Text>
-                            <Text style={[styles.textColorImage, {fontSize: 25}]}> {name} </Text>
-                       </View>
-                    </View>
-                </View>
+  const[liked,setLiked] = useState(false)
+
+  return(
+    <>
+      <View style={styles.ViewDetail}>
+        <View style={styles.ViewImage}>
+          <ImageBackground style={styles.image} source={ruta}/>
+          <View style={styles.Icons}>
+            <View  style={[ styles.cont,{justifyContent: 'space-between', paddingHorizontal: '5%'}]}>
+              <View style={{flex: 1}}>
+                <TouchableWithoutFeedback onPress={onNavigation}>
+                  <Image
+                    style={styles.iconX, {marginLeft: -10}}
+                    source={require('../images/close.png')}
+                  />
+                </TouchableWithoutFeedback>
+              </View>
+              <View
+                style={[ styles.cont, {justifyContent: 'space-around', justifyContent: 'flex-end'} ]}>
+                <Image
+                  style={[styles.iconShare, {marginRight: 20}]}
+                  source={require('../images/share.png')}
+                />
+                <TouchableOpacity>
+                  <Image
+                    name='heart'
+                    onPress={() =>{setLiked(!liked)}}
+                    style={[styles.iconShare, {marginRight: 20, marginTop: 2,}]}
+                    source={liked? require('../images/heart2.png'): require('../images/heart.png')}
+                  />
+                </TouchableOpacity> 
+              </View>
             </View>
-
-        </>
-
-        );
-  
+            <View style={styles.ViewName}>
+              <Text style={[styles.textColorImage, {fontSize: 18}]}>
+                {' '}
+                {category}{' '}
+              </Text>
+              <Text style={[styles.textColorImage, {fontSize: 25}]}> {name} </Text>
+            </View>
+            <View style={styles.ViewIngredients}>
+              <Text style={[styles.textColorImage, {fontSize: 18}]}>Ingredients</Text>
+              <Text style={[styles.textColorImage, {fontSize: 16}]}>for {portions} servings</Text>            
+            </View> 
+          </View>
+        </View> 
+      </View>
+    </>
+  ); 
 }
 
 const styles =StyleSheet.create({
     ViewDetail: {
         flex: 1,
-        backgroundColor: "#332F2C"
+        backgroundColor: "#1e1e1e"
       },
     ViewImage: {
         flex: 1,
@@ -74,7 +91,7 @@ const styles =StyleSheet.create({
         justifyContent: 'flex-start',
         alignContent: 'flex-start',
         justifyContent: 'space-between',
-        marginTop: '-150%',
+        marginTop: '-180%',
         paddingLeft: 15,
       },
       cont: {
@@ -90,20 +107,17 @@ const styles =StyleSheet.create({
         width:48,
       },
 
-    ViewName:{
+      ViewName:{
         position:"absolute",
-        marginTop:190,
-        marginLeft:20,
+        marginTop:230,
+        marginLeft:10,
         width:"100%",
-   },
-
-   textColorImage: {
-    color: 'white',
-    fontWeight: '500',
-  },
- 
-    ViewPoster:{
-       
+      },
+      textColorImage: {
+        color: 'white',
+      fontWeight: '500',
+      },
+      ViewPoster:{
         shadowColor:"#000",
         shadowOffset:{
             width:0,
@@ -113,7 +127,13 @@ const styles =StyleSheet.create({
         alignItems:'center',
         shadowOpacity:1,
         shadowRadius:10,
-     },
- 
+      },
+      ViewIngredients:{
+        position:"absolute",
+        marginTop:350,
+        marginLeft:20,
+        width:"100%",
+      },
+    
 })
 

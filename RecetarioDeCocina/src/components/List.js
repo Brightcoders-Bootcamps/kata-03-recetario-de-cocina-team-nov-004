@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import { Text, View, StyleSheet, FlatList,Dimensions, Image,TouchableWithoutFeedback } from 'react-native';
-
-
+import { Text, View, StyleSheet, FlatList, Dimensions, Image,TouchableWithoutFeedback } from 'react-native';
 
 
 export default function List(props){
@@ -13,7 +11,6 @@ return(
         horizontal ={true}
         data={data}
         renderItem= {(item) => <RenderItem  data={item} navigation={navigation} /> }
-       
         />  
     </View>
 
@@ -24,8 +21,10 @@ function RenderItem(props){
     const {data, navigation} =props;
     const{ id, name, ruta,category, ingredients,portions,} =data.item;
 
-    const onNavigation = ( ) => {
+const onNavigation = ( ) => {
+
         navigation.navigate('detail', {id, name, ruta,category, ingredients,portions} );
+
     }
     //console.log(props);
     return(
@@ -33,7 +32,7 @@ function RenderItem(props){
         <TouchableWithoutFeedback onPress={onNavigation}>
             <View style={styles.card}>
                 <Image style={styles.image} source={ruta}/>
-                <Text style={{color:'#fff', marginBottom:10,marginTop:5} }>{name}</Text>
+                <Text style={styles.text}>{name}</Text>
             </View>
         </TouchableWithoutFeedback>
     );
@@ -51,10 +50,17 @@ const styles =StyleSheet.create({
        shadowRadius:10,
     },
     image:{
-       width: 100,
-       height: 120,
+       width: 110,
+       height: 130,
        borderRadius: 10,
+       marginRight: 10
     },
+    text:{
+        color:'#fff', 
+        marginBottom:10,
+        marginTop:5,
+        width:100
+    }
 
 
 })
