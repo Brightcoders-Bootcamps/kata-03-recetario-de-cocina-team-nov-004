@@ -51,7 +51,7 @@ const styles =StyleSheet.create({
     },
     image:{
        width: 110,
-       height: 130,
+       height: 110,
        borderRadius: 10,
        marginRight: 10
     },

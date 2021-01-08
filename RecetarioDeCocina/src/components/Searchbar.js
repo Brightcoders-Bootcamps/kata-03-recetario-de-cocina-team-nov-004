@@ -5,38 +5,25 @@
  * @format
  * @flow strict-local
  */
-
-
 import React, {Component} from 'react';
 import {
     SafeAreaView,
     StyleSheet,
-    ScrollView,
     View,
-    Text,
-    StatusBar,
+    TextInput,
     Button,
-    Alert,
     Icon,
   } from 'react-native';
-  export default class SearchBar extends Component{
-      render(){
-        
-          return(
-            <form>
-                <input
-                type="text"
-                placeholder="What ..."
-                value={this.props.filterText}
-                onChange={this.handleFilterTextChange}
-                />
-              
-          </form>
-          )
-      }
-  }
+
+  export default function SearchBar(){
+      return(
+        <View>
+          
+        </View>
+          );
+   }
+  
 
 const styles = StyleSheet.create({
-      
-   
+ 
       });

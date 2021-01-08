@@ -4,12 +4,6 @@ import {View, StyleSheet,Image, FlatList,
     Dimensions,
     TouchableOpacity,TouchableWithoutFeedback,Text, ScrollView} from 'react-native'
  
-import {LogBox} from 'react-native';
-
-
-LogBox.ignoreLogs([
-  'Each child in a list should have a uni',
-]);
 
 export default function Detail(props){
   const {route, navigation}= props;
@@ -28,11 +22,11 @@ export default function Detail(props){
         <View style={styles.ViewImage}>
           <ImageBackground style={styles.image} source={ruta}/>
           <View style={styles.Icons}>
-            <View  style={[ styles.cont,{justifyContent: 'space-between', paddingHorizontal: '5%'}]}>
+            <View  style={[ styles.cont,{justifyContent: 'space-between', }]}>
               <View style={{flex: 1}}>
                 <TouchableWithoutFeedback onPress={onNavigation}>
                   <Image
-                    style={styles.iconX, {marginLeft: -10}}
+                    style={styles.iconX, {marginLeft: -10, marginTop:-12}}
                     source={require('../images/close.png')}
                   />
                 </TouchableWithoutFeedback>
@@ -53,14 +47,15 @@ export default function Detail(props){
                 </TouchableOpacity> 
               </View>
             </View>
-            <View style={styles.ViewName}>
+          </View>
+          <View style={styles.ViewName}>
               <Text style={[styles.textColorImage, {fontSize: 18}]}>
                 {' '}
                 {category}{' '}
               </Text>
               <Text style={[styles.textColorImage, {fontSize: 25}]}> {name} </Text>
-            </View>
-            <View style={styles.ViewIngredients}>
+          </View>
+          <View style={styles.ViewIngredients}>
               <Text style={[styles.textColorImage, {fontSize: 18}]}>Ingredients</Text>
               <Text style={[styles.textColorImage, {fontSize: 16}]}>for {portions} servings</Text>     
               <ScrollView style={styles.scrollList}>
@@ -74,10 +69,8 @@ export default function Detail(props){
                       )
                       })
                   }
-            </ScrollView>       
-            </View> 
-            
-          </View>
+              </ScrollView>       
+          </View> 
         </View> 
       </View>
     </>
@@ -104,20 +97,22 @@ const styles =StyleSheet.create({
         justifyContent: 'flex-start',
         alignContent: 'flex-start',
         justifyContent: 'space-between',
-        marginTop: '-180%',
+        marginTop: '-155%',
         paddingLeft: 15,
       },
       cont: {
           flex: 1, 
-          flexDirection: 'row'
+          flexDirection: 'row',
+          paddingHorizontal: '2%',
+
         },
       iconShare: {
         height: 27,
         width: 27,
       },
       iconX:{
-        height:48,
-        width:48,
+        height:50,
+        width:50,
       },
 
       ViewName:{
@@ -143,25 +138,27 @@ const styles =StyleSheet.create({
       },
       ViewIngredients:{
         position:"absolute",
-        marginTop:350,
+        marginTop:330,
         marginLeft:20,
         width:"100%",
       },
       scrollList:{
+        width:"90%",
         height: 200,
-        marginTop: 10
+        marginTop: 10,
       },
       viewList:{
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginRight: 50,
-        marginTop: 35,
+        marginRight: 20,
+        marginTop: 25,
         marginBottom: 0,
         paddingBottom: 18,
         borderBottomWidth: 1,
         borderBottomColor: '#3C3C3C'
       },
       textIngredient:{
+        fontSize: 15,
         color: 'white'
       }
 })
