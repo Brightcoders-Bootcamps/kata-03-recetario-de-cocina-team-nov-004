@@ -2,8 +2,8 @@ import React,{useState,useEffect} from 'react'
 import {View, StyleSheet,Image, FlatList,
     ImageBackground,
     Dimensions,
-    TouchableOpacity,TouchableWithoutFeedback,Text} from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler';
+    TouchableOpacity,TouchableWithoutFeedback,Text, ScrollView} from 'react-native'
+ 
 import {LogBox} from 'react-native';
 
 
@@ -62,8 +62,21 @@ export default function Detail(props){
             </View>
             <View style={styles.ViewIngredients}>
               <Text style={[styles.textColorImage, {fontSize: 18}]}>Ingredients</Text>
-              <Text style={[styles.textColorImage, {fontSize: 16}]}>for {portions} servings</Text>            
+              <Text style={[styles.textColorImage, {fontSize: 16}]}>for {portions} servings</Text>     
+              <ScrollView style={styles.scrollList}>
+                  {
+                    ingredients.map((item) => {
+                      return (
+                      <View style={styles.viewList} key={item.key}>
+                        <Text style={styles.textIngredient}>{item.ingredient}</Text> 
+                        <Text style={styles.textIngredient}>{item.quantity}</Text> 
+                      </View>
+                      )
+                      })
+                  }
+            </ScrollView>       
             </View> 
+            
           </View>
         </View> 
       </View>
@@ -134,6 +147,22 @@ const styles =StyleSheet.create({
         marginLeft:20,
         width:"100%",
       },
-    
+      scrollList:{
+        height: 200,
+        marginTop: 10
+      },
+      viewList:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginRight: 50,
+        marginTop: 35,
+        marginBottom: 0,
+        paddingBottom: 18,
+        borderBottomWidth: 1,
+        borderBottomColor: '#3C3C3C'
+      },
+      textIngredient:{
+        color: 'white'
+      }
 })
 
