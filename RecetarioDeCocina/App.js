@@ -14,6 +14,10 @@ LogBox.ignoreLogs([
   'Calling `getNode()`',
 ]);
 
+LogBox.ignoreLogs([
+  'Each child in a list should have a uni',
+]);
+
 const App = () => {
   return(
     <NavigationContainer>

@@ -3,8 +3,8 @@ import {StyleSheet, View, Image, Text, TextInput} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import List from '../components/List';
 import CarouselVertical from '../components/CarouselVertical';
-import {data} from '../components/Data' 
-
+import {data} from '../components/Data'
+import SearchBar from '../components/Searchbar'
 let recipes = data.recipes
 
 export default function Home(props){
@@ -18,6 +18,9 @@ export default function Home(props){
             </View>
 
             <ScrollView  style={styles.viewPrincipal}>
+                <View style={styles.ViewSearch}>
+                    <SearchBar />
+                </View>
                 <View style={styles.viewTrending}>
                     <Text style={styles.textTrending}>TRENDING</Text>
                     <List  data={recipes}  navigation={navigation}  />
@@ -58,12 +61,16 @@ const styles = StyleSheet.create({
     viewPrincipal:{
         backgroundColor: "#282828"
     },
+    ViewSearch:{
+        marginTop:-10,
+    },
     viewRecent:{
-        marginTop:30,
+        marginTop:1,
     },
     viewTrending:{
         paddingHorizontal:5,
-        marginTop:30
+        marginTop:15, 
+        marginLeft:10,
     },
     viewRecipes:{
         marginVertical:10,
@@ -75,7 +82,8 @@ const styles = StyleSheet.create({
     textTrending:{
         color:"#BB367A",
         fontSize: 20,
-        marginBottom:10
+        marginBottom:10,
+        marginLeft:-10,
     },
     textRecent:{
         color:"#BB367A",
