@@ -87,7 +87,7 @@ export default function Detail(props){
 const styles =StyleSheet.create({
     ViewDetail: {
         flex: 1,
-        backgroundColor: "#1e1e1e"
+        backgroundColor: "#282828"
       },
     ViewImage: {
         flex: 1,

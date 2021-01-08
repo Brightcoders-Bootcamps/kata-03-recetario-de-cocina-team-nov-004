@@ -1,18 +1,22 @@
 import React from 'react';
-import {StyleSheet, View, Image, Text} from 'react-native';
+import {StyleSheet, View, Image, Text, TextInput} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import List from '../components/List';
 import CarouselVertical from '../components/CarouselVertical';
-import {data} from '../components/Data'
+import {data} from '../components/Data' 
 
 let recipes = data.recipes
 
 export default function Home(props){
     const {navigation}= props;
      //console.log(props);
-
+         
     return(
-        <>
+        <>  
+            <View style={styles.viewsearchbar}>
+                <TextInput style={styles.searchbar} placeholder='What do you want to eat?' placeholderTextColor='white'></TextInput>
+            </View>
+
             <ScrollView  style={styles.viewPrincipal}>
                 <View style={styles.viewTrending}>
                     <Text style={styles.textTrending}>TRENDING</Text>
@@ -32,9 +36,27 @@ export default function Home(props){
     )
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ 
+    viewsearchbar:{
+        backgroundColor: "#1e1e1e",
+        alignItems: 'center',
+        backgroundColor: '#282828',
+    },
+
+    searchbar:{ 
+        alignItems: 'center',
+        fontSize: 15,
+        color: 'white',
+        margin: 10,
+        width: '90%',
+        height: 40,
+        backgroundColor: '#343435',
+        borderRadius: 10, 
+        marginTop: 40,
+    },  
+
     viewPrincipal:{
-        backgroundColor: "#1e1e1e"
+        backgroundColor: "#282828"
     },
     viewRecent:{
         marginTop:30,
