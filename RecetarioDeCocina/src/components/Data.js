@@ -19,6 +19,10 @@ export const data = {
           ingredient: 'harina',
           quantity: '1 Kg',
         },
+        {
+          ingredient: 'piña',
+          quantity: '200 gr',
+        },
       ],
     },
 
@@ -45,6 +49,10 @@ export const data = {
           ingredient: 'papas',
           quantity: '4 pz',
         },
+        {
+          ingredient: 'ajo',
+          quantity: '1 pz',
+        },
      
       ],
     },
@@ -67,6 +75,10 @@ export const data = {
           ingredient: 'harina',
           quantity: '1 Kg',
         },
+        {
+          ingredient: 'mantequilla',
+          quantity: '10 gr',
+        },
       ],
     },
     {
@@ -88,7 +100,10 @@ export const data = {
           ingredient: 'pasas',
           quantity: '1 Kg',
         },
-        
+        {
+          ingredient: 'pera',
+          quantity: '2 pz',
+        },
       ],
     },
     {
@@ -109,6 +124,10 @@ export const data = {
         {
           ingredient: 'aguacate',
           quantity: '1 Kg',
+        },
+        {
+          ingredient: 'lechuga',
+          quantity: '1 pz',
         },
         
       ],

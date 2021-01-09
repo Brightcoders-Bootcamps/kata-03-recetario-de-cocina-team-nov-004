@@ -3,6 +3,7 @@ import {View, StyleSheet,Image, FlatList,
     ImageBackground,
     Dimensions,
     TouchableOpacity,TouchableWithoutFeedback,Text, ScrollView} from 'react-native'
+import Icon from 'react-native-vector-icons/AntDesign';
  
 
 export default function Detail(props){
@@ -25,24 +26,18 @@ export default function Detail(props){
             <View  style={[ styles.cont,{justifyContent: 'space-between', }]}>
               <View style={{flex: 1}}>
                 <TouchableWithoutFeedback onPress={onNavigation}>
-                  <Image
-                    style={styles.iconX, {marginLeft: -10, marginTop:-12}}
-                    source={require('../images/close.png')}
-                  />
+                  <Icon name="close" style={{fontSize: 32, color:'white', marginLeft: -10}}/>
                 </TouchableWithoutFeedback>
               </View>
-              <View
-                style={[ styles.cont, {justifyContent: 'space-around', justifyContent: 'flex-end'} ]}>
-                <Image
-                  style={[styles.iconShare, {marginRight: 20}]}
-                  source={require('../images/share.png')}
-                />
+              <View style={[ styles.cont, {justifyContent: 'space-around', justifyContent: 'flex-end'} ]}>
                 <TouchableOpacity>
-                  <Image
-                    name='heart'
-                    onPress={() =>{setLiked(!liked)}}
-                    style={[styles.iconShare, {marginRight: 20, marginTop: 2,}]}
-                    source={liked? require('../images/heart2.png'): require('../images/heart.png')}
+                  <Icon name="upload" style={{fontSize: 28, color:'white', marginLeft: -10, marginRight: 20}}/>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Icon name={liked? "heart":"hearto"} size={28}  color="white" marginTop={-12}
+                    onPress={() =>{
+                      setLiked (!liked)
+                    }} 
                   />
                 </TouchableOpacity> 
               </View>
@@ -56,7 +51,7 @@ export default function Detail(props){
               <Text style={[styles.textColorImage, {fontSize: 25}]}> {name} </Text>
           </View>
           <View style={styles.ViewIngredients}>
-              <Text style={[styles.textColorImage, {fontSize: 18}]}>Ingredients</Text>
+              <Text style={[styles.textColorImage, {fontSize: 18, marginTop: 5}]}>Ingredients</Text>
               <Text style={[styles.textColorImage, {fontSize: 16}]}>for {portions} servings</Text>     
               <ScrollView style={styles.scrollList}>
                   {
@@ -97,7 +92,7 @@ const styles =StyleSheet.create({
         justifyContent: 'flex-start',
         alignContent: 'flex-start',
         justifyContent: 'space-between',
-        marginTop: '-155%',
+        marginTop: '-165%',
         paddingLeft: 15,
       },
       cont: {
@@ -117,7 +112,7 @@ const styles =StyleSheet.create({
 
       ViewName:{
         position:"absolute",
-        marginTop:230,
+        marginTop:"70%",
         marginLeft:10,
         width:"100%",
       },
@@ -137,14 +132,16 @@ const styles =StyleSheet.create({
         shadowRadius:10,
       },
       ViewIngredients:{
+        flex:1,
         position:"absolute",
-        marginTop:330,
+        marginTop:Dimensions.get('window').height / 2,
         marginLeft:20,
-        width:"100%",
+        width: Dimensions.get('window').width,
+        
       },
       scrollList:{
         width:"90%",
-        height: 200,
+        height: Dimensions.get('window').height / 3,
         marginTop: 10,
       },
       viewList:{
@@ -156,6 +153,7 @@ const styles =StyleSheet.create({
         paddingBottom: 18,
         borderBottomWidth: 1,
         borderBottomColor: '#3C3C3C'
+        
       },
       textIngredient:{
         fontSize: 15,

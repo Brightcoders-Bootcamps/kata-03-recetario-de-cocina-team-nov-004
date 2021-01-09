@@ -1,10 +1,14 @@
 import React from 'react';
-import {StyleSheet, View, Image, Text, TextInput} from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import {StyleSheet, View, Image, Text, TextInput, Input, Dimensions, StatusBar} from 'react-native';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import List from '../components/List';
 import CarouselVertical from '../components/CarouselVertical';
-import {data} from '../components/Data'
-import SearchBar from '../components/Searchbar'
+import {data} from '../components/Data';
+import SearchBar from '../components/Searchbar';
+import Icon from 'react-native-vector-icons/AntDesign';
+import IconPhone from 'react-native-vector-icons/FontAwesome';
+
+
 let recipes = data.recipes
 
 export default function Home(props){
@@ -13,17 +17,23 @@ export default function Home(props){
          
     return(
         <>  
-            <View style={styles.viewsearchbar}>
-                <TextInput style={styles.searchbar} placeholder='What do you want to eat?' placeholderTextColor='white'></TextInput>
-            </View>
-
             <ScrollView  style={styles.viewPrincipal}>
-                <View style={styles.ViewSearch}>
-                    <SearchBar />
+                <View style={styles.container}>
+                    <View style={styles.viewsearchbar}>
+                        <Icon name="search1" style={{fontSize: 23, color:"white",paddingLeft:5}}/>
+                        <TextInput style={styles.searchbar} placeholder= 'What do you want to eat?' placeholderTextColor='white'></TextInput> 
+                        <TouchableOpacity>
+                            <IconPhone name="microphone" style={{fontSize: 20, color:"white",paddingRight:10}}/>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-                <View style={styles.viewTrending}>
-                    <Text style={styles.textTrending}>TRENDING</Text>
-                    <List  data={recipes}  navigation={navigation}  />
+                <View style={styles.viewFirst}>
+                    <View style={styles.viewTrending}>
+                        <Text style={styles.textTrending}>TRENDING</Text>
+                        <View style={styles.flat}>
+                            <List data={recipes}  navigation={navigation}  />
+                        </View>
+                    </View>
                 </View>
                 <View style={styles.viewRecent}>
                     <Text style={styles.textRecent}>RECENT</Text>
@@ -40,29 +50,38 @@ export default function Home(props){
 }
 
 const styles = StyleSheet.create({ 
-    viewsearchbar:{
-        backgroundColor: "#1e1e1e",
-        alignItems: 'center',
-        backgroundColor: '#282828',
+    container:{
+        flex: 1,
+        width:'100%',
+        paddingHorizontal:10,
     },
-
-    searchbar:{ 
+    viewsearchbar:{
+        backgroundColor: '#343435',
+        flex:1,
+        width: '100%',
+        height: 40,
+        flexDirection: 'row',
+        borderRadius: 10, 
+        marginTop: 30,
+        marginBottom:30,
         alignItems: 'center',
-        fontSize: 15,
+    },
+    searchbar:{ 
+        fontSize: 14,
         color: 'white',
-        margin: 10,
-        width: '90%',
+        marginLeft: 10,
+        width: '50%',
         height: 40,
         backgroundColor: '#343435',
         borderRadius: 10, 
-        marginTop: 40,
+        flex:1
     },  
-
-    viewPrincipal:{
-        backgroundColor: "#282828"
+    viewFirst:{
+        height: Dimensions.get('window').height / 3,
+        width:  Dimensions.get('window').width
     },
-    ViewSearch:{
-        marginTop:-10,
+    viewPrincipal:{
+        backgroundColor: "#282828",
     },
     viewRecent:{
         marginTop:1,
@@ -90,5 +109,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom:10,
         marginLeft: 5
+    },
+    flat:{
+        height: 160,
     }
 })
