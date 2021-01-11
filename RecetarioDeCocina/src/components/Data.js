@@ -31,7 +31,7 @@ export const data = {
       name: 'Pollo Enchipotlado',
       portions: '1',
       ruta: require('../images/pollo.jpg'),
-      category: 'TRENDING',
+      category: 'RECENT',
       ingredients: [
           {
           ingredient: 'pollo',
@@ -128,6 +128,36 @@ export const data = {
         {
           ingredient: 'lechuga',
           quantity: '1 pz',
+        },
+        
+      ],
+    },
+    {
+      id: '6',
+      name: 'Hamburguesa',
+      portions: '1',
+      ruta: require('../images/hamburguesa.jpg'),
+      category: 'RECENT',
+      ingredients: [
+        {
+          ingredient: 'pan',
+          quantity: '2 pz',
+        },
+        {
+          ingredient: 'tomate',
+          quantity: '20 g',
+        },
+        {
+          ingredient: 'aguacate',
+          quantity: '1 Kg',
+        },
+        {
+          ingredient: 'lechuga',
+          quantity: '1 pz',
+        },
+        {
+          ingredient: 'carne',
+          quantity: '10 g',
         },
         
       ],

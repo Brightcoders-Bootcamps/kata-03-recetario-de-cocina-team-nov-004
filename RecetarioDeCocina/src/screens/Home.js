@@ -13,8 +13,7 @@ let recipes = data.recipes
 
 export default function Home(props){
     const {navigation}= props;
-     //console.log(props);
-         
+
     return(
         <>  
             <ScrollView  style={styles.viewPrincipal}>
@@ -47,6 +46,13 @@ export default function Home(props){
             </ScrollView>       */}
         </>
     )
+
+
+
+
+
+
+
 }
 
 const styles = StyleSheet.create({ 

@@ -6,15 +6,16 @@ import Carousel  from 'react-native-snap-carousel';
 const {width}=Dimensions.get("window");
 const ITEM_WIDTH=Math.round(width * 0.7);
 
-
-
 export default function CarouselVertical(props){
-    const {data, navigation} = props;
+    const {data , navigation} = props;
     //console.log(props);
+
+    dataRecent =data.filter((item) => item.category == 'RECENT');
+
     return(
       <Carousel
       layout="default" 
-      data={data}
+      data={dataRecent}
       renderItem= {(item) => <RenderItem  data={item} navigation={navigation} /> }
       sliderWidth={width}
       itemWidth={ITEM_WIDTH}

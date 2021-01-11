@@ -1,32 +1,34 @@
 import React, {Component} from 'react';
-import { Text, View, StyleSheet, FlatList, Dimensions, Image,TouchableWithoutFeedback } from 'react-native';
+import { ScrollView, Text, View, StyleSheet, FlatList, Dimensions, Image,TouchableWithoutFeedback } from 'react-native';
 
 
 export default function List(props){
 const {data,navigation}=props;
+//console.log(data);
 
+dataTrending =data.filter((item) => item.category == 'TRENDING');
+  //  console.log(item);     
 return(
     <View style={{flex: 1}}>
         <FlatList 
         horizontal ={true}
-        data={data}
+        data={dataTrending}
         renderItem= {(item) => <RenderItem  data={item} navigation={navigation} /> }
-        />  
+        />
     </View>
-
+             
 );
 }
 
 function RenderItem(props){
     const {data, navigation} =props;
     const{ id, name, ruta,category, ingredients,portions,} =data.item;
-
+//console.log(props);
 const onNavigation = ( ) => {
 
         navigation.navigate('detail', {id, name, ruta,category, ingredients,portions} );
-
     }
-    //console.log(props);
+
     return(
 
         <TouchableWithoutFeedback onPress={onNavigation}>
@@ -36,8 +38,9 @@ const onNavigation = ( ) => {
             </View>
         </TouchableWithoutFeedback>
     );
-}
 
+
+};
 const styles =StyleSheet.create({
     card:{
        shadowColor:"#000",
