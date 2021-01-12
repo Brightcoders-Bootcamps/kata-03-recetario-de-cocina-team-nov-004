@@ -33,10 +33,10 @@ export const data = {
       ruta: require('../images/pollo.jpg'),
       category: 'RECENT',
       ingredients: [
-          {
+        {
           ingredient: 'pollo',
-           quantity: '2 kg',
-            },
+          quantity: '2 kg',
+        },
         {
           ingredient: 'chile',
           quantity: '250 g',
@@ -53,7 +53,6 @@ export const data = {
           ingredient: 'ajo',
           quantity: '1 pz',
         },
-     
       ],
     },
     {
@@ -129,7 +128,6 @@ export const data = {
           ingredient: 'lechuga',
           quantity: '1 pz',
         },
-        
       ],
     },
     {
@@ -159,9 +157,7 @@ export const data = {
           ingredient: 'carne',
           quantity: '10 g',
         },
-        
       ],
     },
- 
   ],
 };

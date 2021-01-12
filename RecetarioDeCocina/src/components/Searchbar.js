@@ -5,25 +5,9 @@
  * @format
  * @flow strict-local
  */
-import React, {Component} from 'react';
-import {
-    SafeAreaView,
-    StyleSheet,
-    View,
-    TextInput,
-    Button,
-    Icon,
-  } from 'react-native';
+import React from 'react';
+import {View} from 'react-native';
 
-  export default function SearchBar(){
-      return(
-        <View>
-          
-        </View>
-          );
-   }
-  
-
-const styles = StyleSheet.create({
- 
-      });
+export default function SearchBar() {
+  return <View></View>;
+}
