@@ -6,6 +6,7 @@ export const data = {
       portions: '3',
       ruta: require('../images/pizza.jpg'),
       category: 'TRENDING',
+      like: '1',
       ingredients: [
         {
           ingredient: 'peperoni',
@@ -32,6 +33,7 @@ export const data = {
       portions: '1',
       ruta: require('../images/pollo.jpg'),
       category: 'RECENT',
+      like: '1',
       ingredients: [
         {
           ingredient: 'pollo',
@@ -61,6 +63,7 @@ export const data = {
       portions: '5',
       ruta: require('../images/pastel.jpg'),
       category: 'TRENDING',
+      like: '0',
       ingredients: [
         {
           ingredient: 'Huevos',
@@ -86,6 +89,7 @@ export const data = {
       portions: '5',
       ruta: require('../images/ensalada.jpg'),
       category: 'TRENDING',
+      like: '0',
       ingredients: [
         {
           ingredient: 'zanahorias',
@@ -111,6 +115,7 @@ export const data = {
       portions: '3',
       ruta: require('../images/tostadas.jpg'),
       category: 'TRENDING',
+      like: '0',
       ingredients: [
         {
           ingredient: 'tostada',
@@ -136,6 +141,7 @@ export const data = {
       portions: '1',
       ruta: require('../images/hamburguesa.jpg'),
       category: 'RECENT',
+      like: '0',
       ingredients: [
         {
           ingredient: 'pan',

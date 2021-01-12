@@ -30,7 +30,7 @@ export default function List(props) {
 
 function RenderItem(props) {
   const {data, navigation} = props;
-  const {id, name, ruta, category, ingredients, portions} = data.item;
+  const {id, name, ruta, category, ingredients, portions, like} = data.item;
   //console.log(props);
   const onNavigation = () => {
     navigation.navigate('detail', {
@@ -40,6 +40,7 @@ function RenderItem(props) {
       category,
       ingredients,
       portions,
+      like,
     });
   };
 

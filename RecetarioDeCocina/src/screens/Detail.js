@@ -15,14 +15,14 @@ import Icon from 'react-native-vector-icons/AntDesign';
 
 export default function Detail(props) {
   const {route, navigation} = props;
-  const {name, ruta, ingredients, category, portions} = route.params;
+  const {name, ruta, ingredients, category, portions, like} = route.params;
   // console.log(props);
 
   function onNavigation() {
     navigation.navigate('home');
   }
 
-  const [liked, setLiked] = useState(false);
+  const [liked, setLiked] = useState(like== '0'? false:true);
 
   return (
     <>
